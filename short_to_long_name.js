@@ -104,6 +104,15 @@ exports.handlers = {
                     }
                 }
             }
+            //@params
+            if(doclet.params){
+                for(let key of Object.keys(doclet.params)){
+                    if('description' in doclet.params[key]){
+                        collection.push([doclet.params[key],'description',prefix]);
+                    }
+                    
+                }
+            }
             //@returns
             if(doclet.returns){
                 for(let key of Object.keys(doclet.returns)){

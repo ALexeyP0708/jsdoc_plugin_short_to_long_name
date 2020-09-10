@@ -54,4 +54,4 @@ create in your config file (example: jsdoc_conf.json) of jsdoc application an en
 
 ## tags that it processes
 
-`@classdesc,  @description, @property, @returns, @throws, @see, @augments, @copyright `
+`@classdesc,  @description, @property, @param, @returns, @throws, @see, @augments, @copyright `
