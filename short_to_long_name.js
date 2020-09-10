@@ -1,23 +1,26 @@
 let {Doclet}=require('jsdoc/doclet');
 class FixMethods {
     static parseName(name){
-        return name.match(/^([\.#~]?[^\.#~]+)/g);
+        return name.match(/([\.#~]?[^\.#~]+)/g);
     }
     static convertName(name,prefix){
         prefix=this.parseName(prefix);
         let new_prefix='';
         let lastSymbol='';
+        let kp=0;
         for(let key=0; key<name.length; key++){
+           
             let char=name[key];
             if(['.', '#', '~'].includes(char)){
                 lastSymbol=char;
-                new_prefix+=prefix[key]??'';
+                new_prefix+=prefix[kp]??'';
                 name=name.slice(key+1);
                 key--;
-            }else {
+            }else{
                 name=lastSymbol+name;
                 break;
             }
+            kp++;
         }
         if(new_prefix===''){
             name=name.replace(/^[\.~#]*/,'');
@@ -25,10 +28,11 @@ class FixMethods {
         return new_prefix+name;
     }
     static expandLinkTag(str, prefix) {
-        let pattern = /{@(link|linkcode|linkplain)[\s]+(?:([\s\S]+?)[\s]*\|[\s]*([\S\s]+?)[\s]*|([\S]+?)(?:[\s]+([\S\s]+?)|)[\s]*)}/g;
+        //let pattern = /{@(link|linkcode|linkplain)[\s]+(?:([\s\S]+?)[\s]*\|[\s]*([\S\s]+?)[\s]*|([\S]+?)(?:[\s]+([\S\s]+?)|)[\s]*)}/g;
+        let pattern = /{@(link|linkcode|linkplain)[\s]+(?:([\.#~]+[\s\S]+?)(?:[\s\|]([\S\s]+?)[\s]*|))}/g;
         str = str.replace(pattern,  (p0, p1, p2, p3, p4, p5) =>{
-            let link = p2 ?? p4;
-            let title = p3 ?? p5 ?? link;
+            let link = p2;
+            let title = p3 ?? link;
             title = title.replace(/^[\.#~]/, '');
             if (prefix !== undefined) {
                 link=this.convertName(link,prefix);
