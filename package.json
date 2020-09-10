@@ -1,0 +1,19 @@
+{
+  "name": "@alexeyP0708/short_to_long_name",
+  "version": "1.0.0",
+  "dependencies": {
+    "jsdoc": "^3.6.5"
+  },
+  "author": "Pakhomov Alexey <alexeyp0708@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/ALexeyP0708/jsdoc_plugin_shrot_to_long_name.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ALexeyP0708/jsdoc_plugin_shrot_to_long_name/issues"
+  },
+  "homepage": "https://github.com/ALexeyP0708/jsdoc_plugin_shrot_to_long_name",
+  "publishConfig": { "registry": "https://npm.pkg.github.com/" }
+}
+
