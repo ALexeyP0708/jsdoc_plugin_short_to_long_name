@@ -1,5 +1,5 @@
 {
-  "name": "@alexeyP0708/short_to_long_name",
+  "name": "@alexeyP0708/jsdoc_plugin_shrot_to_long_name",
   "version": "1.0.0",
   "dependencies": {
     "jsdoc": "^3.6.5"
