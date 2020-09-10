@@ -99,19 +99,26 @@ exports.handlers = {
             //@property
             if(doclet.properties){
                 for(let key of Object.keys(doclet.properties)){
-                    collection.push([doclet.properties[key],'description',prefix]);
+                    if('description' in doclet.properties[key]){
+                        collection.push([doclet.properties[key],'description',prefix]);
+                    }
                 }
             }
             //@returns
             if(doclet.returns){
                 for(let key of Object.keys(doclet.returns)){
-                    collection.push([doclet.returns[key],'description',prefix]);
+                    if('description' in doclet.returns[key]){
+                        collection.push([doclet.returns[key],'description',prefix]);
+                    }
+                    
                 }
             }
             //@throws
             if(doclet.exceptions){
                 for(let key of Object.keys(doclet.exceptions)){
-                    collection.push([doclet.exceptions[key],'description',prefix]);
+                    if('description' in doclet.exceptions[key]) {
+                        collection.push([doclet.exceptions[key], 'description', prefix]);
+                    }
                 }
             }
             //@see
